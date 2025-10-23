@@ -308,6 +308,18 @@ h1 {
     background: var(--brand-green-tint);
 }
 
+.option-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.option-heading .option-title {
+    margin-bottom: 0;
+}
+
 /* Module badge styling */
 .option-title {
     display: inline-block;
@@ -320,6 +332,79 @@ h1 {
     color: white;
     background: #6b7280;
     margin-bottom: 8px;
+}
+
+.option-info {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--brand-green-contrast);
+    background: var(--color-surface);
+    color: var(--brand-green-contrast);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 0;
+}
+
+.option-info:hover,
+.option-info:focus-visible {
+    background: var(--brand-green-contrast);
+    color: white;
+    border-color: var(--brand-green-contrast);
+}
+
+.option-info:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px var(--brand-green-tint);
+}
+
+.option-info::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translate(-50%, 6px);
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    padding: 8px 12px;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    white-space: normal;
+    width: max-content;
+    max-width: 220px;
+    text-align: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+}
+
+.option-info::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translate(-50%, 6px);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent var(--color-surface) transparent;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+}
+
+.option-info:hover::after,
+.option-info:hover::before,
+.option-info:focus-visible::after,
+.option-info:focus-visible::before {
+    opacity: 1;
+    transform: translate(-50%, 0);
 }
 
 /* None module badge */
